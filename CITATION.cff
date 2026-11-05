@@ -1,0 +1,26 @@
+cff-version: 1.2.0
+message: "If you use this code or data, please cite it as below."
+title: "Sampler implementation errors and measurement resolution in small-scale diffusion studies: code and data"
+type: software
+version: 1.0.0
+date-released: 2026-11-05
+license: MIT
+repository-code: "https://github.com/i-SAVE/diffusion-sampler-audit"
+authors:
+  - family-names: Isaev
+    given-names: Sharip M.
+    affiliation: ITMO University
+    orcid: "https://orcid.org/0009-0006-8141-5110"
+  - family-names: Kistin
+    given-names: Ilya A.
+    affiliation: Moscow Institute of Physics and Technology
+    orcid: "https://orcid.org/0009-0001-8300-6461"
+  - family-names: Bolsunovskaya
+    given-names: Marina V.
+    affiliation: Peter the Great St. Petersburg Polytechnic University
+    orcid: "https://orcid.org/0000-0001-6650-6491"
+keywords:
+  - diffusion models
+  - sampler correctness
+  - Fréchet Inception Distance
+  - reproducibility

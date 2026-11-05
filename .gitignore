@@ -1,0 +1,8 @@
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+figures/*.eps
+figures/*.pdf
+figures/*.tif
+figures/_*
+figures/_qa/

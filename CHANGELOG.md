@@ -1,3 +1,24 @@
+# Changelog
+
+## 1.0.0 — initial release of diffusion-sampler-audit
+
+- Include the sampler diagnostics, corrected sampler, robust FID implementation,
+  measurement CSVs and scripts that rebuild the paper's tables and figures.
+- Fix the SciPy SVD fallback: `scipy.linalg.svdvals` does not accept
+  `lapack_driver`; use `scipy.linalg.svd(..., compute_uv=False,
+  lapack_driver='gesvd')` so the intended independent driver is actually tried.
+- Make the sampler and FID self-tests exit non-zero when a check fails.
+- Add regression checks for the FID fallback cascade, pinned CPU validation
+  dependencies, and a GitHub Actions validation workflow.
+- Document the scope of reproducibility, missing measurements, font substitution
+  and human scientific authorship. Preserve all original experimental CSVs and
+  the MIT license.
+- Correct two-seed-pair wording in the README and report the CIFAR-10 ten-step
+  gap consistently with the raw-file check (14.9 FID points after rounding).
+
+This is the first release of this repository. The erratum below concerns the
+separate earlier research package, not an earlier tag in this repository.
+
 # Erratum to the previously released reproducibility package
 
 This file records the defects found in the reproducibility package accompanying
@@ -178,7 +199,7 @@ sampler and a correct deterministic one, so it was not a comparison of `eta`.
 With both implemented correctly the published direction does not survive as
 stated, and what replaces it depends on the benchmark: on MNIST the ordering
 reverses in all four cells measured, none of them resolved at three seeds; on
-CIFAR-10 the published direction does appear at ten steps, by 15.0 and 15.7
+CIFAR-10 the published direction does appear at ten steps, by 14.9 and 15.7
 points and resolved at three seeds, and disappears at fifty.
 
 ---

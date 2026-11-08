@@ -8,8 +8,8 @@ Companion repository for
 > and Measurement Resolution in Small-Scale Diffusion Studies.* Submitted to
 > **Pattern Recognition and Image Analysis**.
 
-Everything here runs on CPU. Nothing requires a GPU, model weights, or a
-download. The two diagnostics take milliseconds and about a minute
+After installing the dependencies below, the included checks run on CPU without
+model weights or dataset downloads. The two diagnostics take milliseconds and about a minute
 respectively; the table checks take a few minutes.
 
 ```
@@ -54,7 +54,7 @@ working version of the manuscript (16 tables). The correspondence is:
 | Table 5; 12 and 19 seeds (Section 6.1) | `make_tables.py` blocks 9-10 | `E1c_seeds3_SimpleUNet.csv` |
 | MNIST process length, 44-91 and 641 seeds (Section 6.1) | `check_raw_files.py` | `e3a_mnist.csv` |
 | Table 6, Fig. 4b | `check_raw_files.py`; `make_tables.py` block 14 | `e3a_samplesize.csv`, `e2c_fid_samplesize.csv`, `E3b_samplesize.csv` |
-| CIFAR-10 process length, three draws of ten (Section 7) | `make_tables.py` block 14 | `E3b_cifar_5seeds.csv` |
+| CIFAR-10 process length, three of ten two-seed pairs (Section 7) | `make_tables.py` block 14 | `E3b_cifar_5seeds.csv` |
 
 ## The two checks, in one paragraph each
 
@@ -126,7 +126,49 @@ re-measurement.
 
 ## Requirements
 
+The release checks were run with Python 3.12 on Linux, using the versions in
+`requirements.txt`. Create an isolated environment and install them with:
+
+```bash
+python -m venv .venv
+source .venv/bin/activate
+python -m pip install -r requirements.txt
+# Needed only for src/samplers_fixed.py and its self-test:
+python -m pip install -r requirements-sampler.txt --index-url https://download.pytorch.org/whl/cpu
+```
+
 `numpy` for the diagnostics and `tables/make_tables.py`; `tables/check_raw_files.py` needs only the Python standard library;
 `pandas`, `matplotlib` and `pillow` for `figures/make_figures.py`; `torch` (CPU is fine) for
 `src/samplers_fixed.py`; `scipy` is optional and only used as a fallback SVD
 driver in `src/fid_robust.py`.
+
+Additional implementation checks:
+
+```bash
+python -m unittest discover -s tests -v
+python src/fid_robust.py
+python src/samplers_fixed.py
+```
+
+The figure script requests Arial. If Arial is unavailable, Matplotlib substitutes
+a local font: plotted values and export dimensions can be checked, but typography
+will differ. Generated figures and local environments are excluded from Git.
+
+## Reproducibility scope and provenance
+
+This archive reproduces the analytical diagnostics, derived tables and figures
+from the included measurement CSVs, and synthetic sampler/FID checks. It does
+not contain the training notebooks, trained weights, original generated images
+or Inception features needed to independently rerun the MNIST/CIFAR-10 training
+and original FID measurements. Kaggle notebook identifiers are recorded above
+and in `tables/check_raw_files.py`; their external contents were not validated
+as part of this release audit.
+
+The CSV files are preserved unchanged. Ten blank FID entries in `e1d_fid.csv`
+are accompanied by explicit non-finite-output failure statuses. The blank DDPM
+cell at T = 200, NFE = 100 in `E1c_results_SimpleUNet.csv` is unmeasured here;
+the ten infinite peaks in `e1d_peak.csv` record divergence. None is imputed.
+
+See [the validation record](docs/VALIDATION.md) and
+[authorship and tool assistance](docs/PROVENANCE.md). The three scientific
+authors and their ORCIDs are preserved in `CITATION.cff`.

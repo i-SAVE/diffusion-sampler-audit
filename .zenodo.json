@@ -1,0 +1,37 @@
+{
+  "title": "Sampler implementation errors and measurement resolution in small-scale diffusion studies: code and data",
+  "upload_type": "software",
+  "version": "1.0.0",
+  "license": "mit",
+  "creators": [
+    {
+      "name": "Isaev, Sharip M.",
+      "affiliation": "ITMO University",
+      "orcid": "0009-0006-8141-5110"
+    },
+    {
+      "name": "Kistin, Ilya A.",
+      "affiliation": "Moscow Institute of Physics and Technology",
+      "orcid": "0009-0001-8300-6461"
+    },
+    {
+      "name": "Bolsunovskaya, Marina V.",
+      "affiliation": "Peter the Great St. Petersburg Polytechnic University",
+      "orcid": "0000-0001-6650-6491"
+    }
+  ],
+  "description": "Research software and saved measurement data accompanying a study of sampler implementation errors and measurement resolution in small-scale diffusion experiments. The archive contains CPU diagnostics for grid-inconsistent DDPM updates and clipping-dependent sampler rearrangements, a corrected generalized PyTorch sampler, a QR/SVD-based Frechet Inception Distance implementation, fourteen original measurement CSVs, and scripts that rebuild derived tables and four figures. Saved MNIST and CIFAR-10 measurements cover sampler comparisons, process length, training-seed variation and FID sample-size effects. The release fixes the SciPy gesvd fallback and adds executable regression checks and pinned validation dependencies. All original experimental CSVs are retained unchanged, including missing measurements and recorded divergence. Reproducibility covers the included analytical and synthetic diagnostics and calculations from saved CSVs; training notebooks, model weights, original images and Inception feature matrices are not included, so the original training and FID measurements cannot be independently repeated from this archive alone. Scientific authors and ORCIDs are taken from CITATION.cff. License: MIT.",
+  "keywords": [
+    "diffusion models",
+    "sampler correctness",
+    "Fréchet Inception Distance",
+    "reproducibility"
+  ],
+  "related_identifiers": [
+    {
+      "identifier": "https://github.com/i-SAVE/diffusion-sampler-audit",
+      "relation": "isSupplementTo",
+      "scheme": "url"
+    }
+  ]
+}

@@ -1,0 +1,35 @@
+name: CPU reproducibility checks
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    env:
+      OPENBLAS_NUM_THREADS: "1"
+      OMP_NUM_THREADS: "1"
+      MKL_NUM_THREADS: "1"
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - run: python -m pip install -r requirements.txt
+      - run: python -m pip install -r requirements-sampler.txt --index-url https://download.pytorch.org/whl/cpu
+      - run: python -m compileall -q src diagnostics tables figures tests
+      - run: python -m unittest discover -s tests -v
+      - run: python diagnostics/grid_consistency.py
+      - run: python diagnostics/form_identity.py
+      - run: python tables/make_tables.py
+      - run: python tables/check_raw_files.py
+      - run: python figures/make_figures.py
+      - run: python src/fid_robust.py
+      - run: python src/samplers_fixed.py

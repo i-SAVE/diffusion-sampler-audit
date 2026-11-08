@@ -6,3 +6,7 @@ figures/*.pdf
 figures/*.tif
 figures/_*
 figures/_qa/
+.venv/
+.pytest_cache/
+build/
+dist/

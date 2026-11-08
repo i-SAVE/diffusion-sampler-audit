@@ -66,7 +66,7 @@ def _svdvals(A):
         pass
     try:
         import scipy.linalg
-        return scipy.linalg.svdvals(A, lapack_driver='gesvd'), 'gesvd'
+        return scipy.linalg.svd(A, compute_uv=False, lapack_driver='gesvd'), 'gesvd'
     except Exception:
         pass
     # last resort: singular values of A via the eigenvalues of A'A
@@ -162,3 +162,4 @@ if __name__ == '__main__':
     print(f'   FID = {v:.3f} in {time.time()-t:.1f} s, path {path}')
 
     print('\nRESULT:', 'all checks passed' if ok else 'PROBLEMS FOUND')
+    raise SystemExit(0 if ok else 1)

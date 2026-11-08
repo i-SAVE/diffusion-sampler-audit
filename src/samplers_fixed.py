@@ -312,3 +312,4 @@ if __name__ == '__main__':
           f'so the divergence above is caused only by (clipping, network error).')
 
     print('\nRESULT:', 'all checks passed' if ok else 'PROBLEMS FOUND')
+    raise SystemExit(0 if ok else 1)

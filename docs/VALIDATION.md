@@ -3,6 +3,17 @@
 Validation date: 2026-11-08. This records checks executed during release
 preparation; publication and DOI registration are separate operations.
 
+The v1.0.0 release was subsequently published on 2026-11-08 and archived in
+[Zenodo record 24046208](https://zenodo.org/records/24046208). Its version DOI is
+[10.5281/zenodo.24046208](https://doi.org/10.5281/zenodo.24046208); its concept DOI
+is [10.5281/zenodo.24046207](https://doi.org/10.5281/zenodo.24046207). Both DOI
+links and the public record resolved successfully. Software type, version,
+MIT license, all three creators, affiliations, ORCIDs and description matched
+the approved metadata. The downloaded Zenodo ZIP matched the GitHub Release
+API zipball byte for byte (SHA-256
+`e4e2714e5f8dd69cbe1e86d537a2f9fa7a55b46ad418a2482f444def7d0237e3`),
+and all 34 file hashes matched the validated release candidate.
+
 ## Environment
 
 Linux x86_64, Python 3.12.14, NumPy 2.3.5, pandas 2.2.3, Matplotlib 3.10.8,
@@ -11,8 +22,8 @@ NumPy reports OpenBLAS 0.3.30. The runs set `OPENBLAS_NUM_THREADS=1`,
 `OMP_NUM_THREADS=1` and `MKL_NUM_THREADS=1`.
 
 The Python environment inherited the base scientific packages and installed
-CPU PyTorch into an isolated virtual environment. A fresh installation on a
-second machine was not performed. The dependency files pin the directly used
+CPU PyTorch into an isolated virtual environment. The release commit was then
+validated with a fresh dependency installation on a GitHub runner. The dependency files pin the directly used
 packages; they are not a complete transitive or operating-system lock file.
 
 ## Executed checks
@@ -36,8 +47,11 @@ packages; they are not a complete transitive or operating-system lock file.
 The diagnostics, table scripts and figure script ran on the original source.
 The changed FID and sampler self-test scripts were rerun after the technical
 fixes; syntax and the new regressions were also checked after editing. The
-remaining numerical scripts and all CSV inputs were unchanged. GitHub Actions
-was configured with the same checks but had not run on GitHub at preparation.
+remaining numerical scripts and all CSV inputs were unchanged. The same checks
+passed on GitHub Actions for both
+[main](https://github.com/i-SAVE/diffusion-sampler-audit/actions/runs/42431303783)
+and the [v1.0.0 tag](https://github.com/i-SAVE/diffusion-sampler-audit/actions/runs/42431500068),
+each at release commit `f38366a54351c437154bc4c7b360644e33eca3a5`.
 
 Arial was not installed. Matplotlib reported font substitution; all four
 rendered figures were inspected, but exact manuscript typography is unverified.

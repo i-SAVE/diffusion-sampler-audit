@@ -3,6 +3,7 @@ message: "If you use this code or data, please cite it as below."
 title: "Sampler implementation errors and measurement resolution in small-scale diffusion studies: code and data"
 type: software
 version: 1.0.0
+doi: "10.5281/zenodo.24046208"
 date-released: 2026-11-08
 license: MIT
 repository-code: "https://github.com/i-SAVE/diffusion-sampler-audit"

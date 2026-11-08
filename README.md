@@ -1,6 +1,7 @@
 # Sampler implementation errors and measurement resolution — code and data
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+[![DOI (all versions)](https://zenodo.org/badge/DOI/10.5281/zenodo.24046207.svg)](https://doi.org/10.5281/zenodo.24046207)
 
 Companion repository for
 
@@ -24,6 +25,17 @@ figures/make_figures.py           redraws Figs. 1-4 from results/ and asserts ev
 results/                          the measurement files everything above is built from
 CHANGELOG.md                      erratum to the previously released package
 ```
+
+## Cite the software
+
+The archived [v1.0.0 release](https://github.com/i-SAVE/diffusion-sampler-audit/releases/tag/v1.0.0)
+has version DOI [10.5281/zenodo.24046208](https://doi.org/10.5281/zenodo.24046208).
+Use that DOI to cite this specific software and data archive.
+
+The concept DOI [10.5281/zenodo.24046207](https://doi.org/10.5281/zenodo.24046207)
+identifies the software across versions and resolves to the latest archived
+version. The badge above uses the concept DOI; `CITATION.cff` records the version
+DOI. The tagged archive is fixed; subsequent documentation updates live on `main`.
 
 ## Start here
 

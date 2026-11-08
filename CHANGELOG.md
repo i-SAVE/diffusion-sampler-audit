@@ -1,5 +1,12 @@
 # Changelog
 
+## Unreleased
+
+- Link the verified v1.0.0 version DOI and the all-versions concept DOI in the
+  README, add the version DOI to `CITATION.cff`, and record the public archive
+  and GitHub Actions verification. These documentation updates postdate the
+  v1.0.0 tag; the archived source and experimental data remain unchanged.
+
 ## 1.0.0 — initial release of diffusion-sampler-audit
 
 - Include the sampler diagnostics, corrected sampler, robust FID implementation,
